@@ -37,14 +37,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,16 +53,30 @@ class _MyHomePageState extends State<MyHomePage> {
                 fontSize: 16,
               ),
             ),
-            Text(
-              'COUNTER VALUE',
-              style: Theme.of(context).textTheme.headline4,
+            BlocBuilder<CounterCubit, CounterState>(
+              // best practise to make builder a pure function (return value is only dependent on the function arguments, nothing else)
+              builder: (context, state) {
+                if (state.counterValue < 0) {
+                  return Text(
+                    'BRR we are in the negative',
+                    style: Theme.of(context).textTheme.headline4,
+                  );
+                } else {
+                  return Text(
+                    state.counterValue.toString(),
+                    style: Theme.of(context).textTheme.headline4,
+                  );
+                }
+              },
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 FloatingActionButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    BlocProvider.of<CounterCubit>(context).increment();
+                  },
                   tooltip: 'Increment',
                   child: const Icon(Icons.add),
                 ),
@@ -78,7 +84,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: MediaQuery.of(context).size.width * 0.07,
                 ),
                 FloatingActionButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    BlocProvider.of<CounterCubit>(context).decrement();
+                  },
                   tooltip: 'Decrement',
                   child: const Icon(Icons.remove),
                 ),
