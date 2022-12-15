@@ -1,4 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hero_3_bloc_concepts/cubit/counter_cubit.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,12 +13,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    // BlocProvider: Unique instance of the CounterCubit and make it available for the whole subtree
+    return BlocProvider<CounterCubit>(
+      create: (context) => CounterCubit(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const MyHomePage(title: 'Flutter Demo Home Page'),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -49,18 +57,35 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             const Text(
               'You have pushed the button this many times:',
+              style: TextStyle(
+                fontSize: 16,
+              ),
             ),
             Text(
-              '$_counter',
+              'COUNTER VALUE',
               style: Theme.of(context).textTheme.headline4,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FloatingActionButton(
+                  onPressed: () {},
+                  tooltip: 'Increment',
+                  child: const Icon(Icons.add),
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.07,
+                ),
+                FloatingActionButton(
+                  onPressed: () {},
+                  tooltip: 'Decrement',
+                  child: const Icon(Icons.remove),
+                ),
+              ],
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }

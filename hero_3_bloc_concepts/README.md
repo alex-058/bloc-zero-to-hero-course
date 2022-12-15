@@ -2,15 +2,15 @@
 
 A new Flutter project.
 
-## Getting Started
+## Here is document all the takeaways i gathered in the course
 
-This project is a starting point for a Flutter application.
+### Bloc Provider
+Hooks the UI up with the bloc / cubit. 
+Here we wrap the whole MaterialApp with the BlocProvider widget, which enables the state of CounterState for the whole application
 
-A few resources to get you started if this is your first Flutter project:
+### Bloc Builder
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Bloc Listener
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
