@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:cubit_vs_bloc/counter_cubit.dart';
 
 Future<void> main(List<String> arguments) async {
-  print('Program is starting');
+  print('Cubit Program is starting');
 
   final counterCubit = CounterCubit();
 
