@@ -43,72 +43,74 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: BlocListener<CounterCubit, CounterState>(
-        listener: (context, state) {
-          if (state.wasIncremented == true) {
-            // show incremented snackbar
-            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-              content: Text('Incremented!'),
-              duration: Duration(milliseconds: 10),
-            ));
-          } else {
-            // show decremented snackbar
-            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                content: Text('Decremented!'),
-                duration: Duration(milliseconds: 10)));
-          }
-        },
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Text(
-                'You have pushed the button this many times:',
-                style: TextStyle(
-                  fontSize: 16,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'You have pushed the button this many times:',
+              style: TextStyle(
+                fontSize: 16,
+              ),
+            ),
+            BlocConsumer<CounterCubit, CounterState>(
+              listener: (context, state) {
+                if (state.wasIncremented == true) {
+                  // show incremented snackbar
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text('Incremented!'),
+                    duration: Duration(milliseconds: 100),
+                  ));
+                } else {
+                  // show decremented snackbar
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text('Decremented!'),
+                      duration: Duration(milliseconds: 100)));
+                }
+              },
+              builder: (context, state) {
+                return BlocBuilder<CounterCubit, CounterState>(
+                  // best practise to make builder a pure function (return value is only dependent on the function arguments, nothing else)
+                  builder: (context, state) {
+                    if (state.counterValue < 0) {
+                      return Text(
+                        'BRR we are in the negative',
+                        style: Theme.of(context).textTheme.headline4,
+                      );
+                    } else {
+                      return Text(
+                        state.counterValue.toString(),
+                        style: Theme.of(context).textTheme.headline4,
+                      );
+                    }
+                  },
+                );
+              },
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FloatingActionButton(
+                  onPressed: () {
+                    BlocProvider.of<CounterCubit>(context).increment();
+                  },
+                  tooltip: 'Increment',
+                  child: const Icon(Icons.add),
                 ),
-              ),
-              BlocBuilder<CounterCubit, CounterState>(
-                // best practise to make builder a pure function (return value is only dependent on the function arguments, nothing else)
-                builder: (context, state) {
-                  if (state.counterValue < 0) {
-                    return Text(
-                      'BRR we are in the negative',
-                      style: Theme.of(context).textTheme.headline4,
-                    );
-                  } else {
-                    return Text(
-                      state.counterValue.toString(),
-                      style: Theme.of(context).textTheme.headline4,
-                    );
-                  }
-                },
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  FloatingActionButton(
-                    onPressed: () {
-                      BlocProvider.of<CounterCubit>(context).increment();
-                    },
-                    tooltip: 'Increment',
-                    child: const Icon(Icons.add),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.07,
-                  ),
-                  FloatingActionButton(
-                    onPressed: () {
-                      BlocProvider.of<CounterCubit>(context).decrement();
-                    },
-                    tooltip: 'Decrement',
-                    child: const Icon(Icons.remove),
-                  ),
-                ],
-              ),
-            ],
-          ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.07,
+                ),
+                FloatingActionButton(
+                  onPressed: () {
+                    BlocProvider.of<CounterCubit>(context).decrement();
+                  },
+                  tooltip: 'Decrement',
+                  child: const Icon(Icons.remove),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
