@@ -8,14 +8,27 @@ A new Flutter project.
 Hooks the UI up with the bloc / cubit. 
 Here we wrap the whole MaterialApp with the BlocProvider widget, which enables the state of CounterState for the whole application
 
-### Bloc Builder
+### Bloc Builder (builds a widget upon state change)
 Receive new state in UI / update UI according to state change.
 Wrap the UI element with this widget to be able to access the state. 
 Magic component that builds the UI if new state is being emitted.
 (we are the blocBuilder who are waiting for the boat)
 
-### Bloc Listener
-NEXT
+BlocBuilder can be called multiple times due to the flutter engine
+
+What about calling a SnackBar or navigating inside of a BlocBuilder? (with context)
+
+### Bloc Listener (calls a function upon state change)
+Does not build a widget, rather takes a void function.
+
+### Bloc Consumer (combines builder and listener)
+Combines the functionality of listener and builder in one single widget
+
+### Screen Area
+
+![](2022-12-16-11-01-27.png)
+
+![](2022-12-16-11-19-16.png)
 
 
 
