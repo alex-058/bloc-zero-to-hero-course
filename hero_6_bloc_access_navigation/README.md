@@ -1,16 +1,9 @@
 # hero_6_bloc_access_navigation
 
-A new Flutter project.
+A new Flutter project that deals with the content for access and navigation
 
-## Getting Started
+## Navigation problem with cubits
 
-This project is a starting point for a Flutter application.
+![](2022-12-24-12-37-17.png)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Therefore this is called local access, because only one screen (BuildContext) has access to that cubit and the provided functions that alter the state 
