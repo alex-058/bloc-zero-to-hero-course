@@ -101,7 +101,14 @@ class _HomeScreenState extends State<HomeScreen> {
             TextButton(
               onPressed: () {
                 // Navigate to second screen
-                Navigator.of(context).popAndPushNamed('second_screen');
+                // Navigator.of(context).popAndPushNamed('second_screen');
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (newContext) => BlocProvider.value(
+                          value: BlocProvider.of<CounterCubit>(
+                              context), // providing existing instance of counter cubit, context danger
+                          child: const SecondScreen(
+                              title: 'Second screen', color: Colors.redAccent),
+                        )));
               },
               child: const Text('Go to second screen'),
             )

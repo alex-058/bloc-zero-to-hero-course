@@ -14,6 +14,13 @@ Therefore this is called local access, because only one screen (BuildContext) ha
 
 ![](2022-12-24-13-06-29.png) 
 
+### Anonymous Routing
+
+Take the single cubit instance and pass it via the BlocProvider.value widget to another screen
+(be careful about the context, the context of the home screen and not the new context need to be provided)
+
+![](2022-12-25-09-54-36.png)
+
 ## Important to know 
 
 The home property in the Material App is pushed first in the navigation stack (default route)
