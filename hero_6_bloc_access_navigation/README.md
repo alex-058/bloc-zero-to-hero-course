@@ -21,6 +21,18 @@ Take the single cubit instance and pass it via the BlocProvider.value widget to 
 
 ![](2022-12-25-09-54-36.png)
 
+### Named Routing
+
+Creating _instance in main app 
+Establishing named routes which are wrapped in BlocProvider.value with this single instance as value
+Dispose method in main needs to be triggered to close the cubit (stream)
+
+Used popAndPushNamed to prevent back buttons
+
+### Generated routing
+
+Separate file which takes care of route settings 
+
 ## Important to know 
 
 The home property in the Material App is pushed first in the navigation stack (default route)

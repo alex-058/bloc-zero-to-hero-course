@@ -98,9 +98,17 @@ class _SecondScreenState extends State<SecondScreen> {
               ],
             ),
             TextButton(
-              onPressed: () {},
-              child: const Text('Go to second screen'),
-            )
+              onPressed: () {
+                Navigator.of(context).popAndPushNamed('/third_screen');
+              },
+              child: const Text('Go to third screen'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).popAndPushNamed('/home');
+              },
+              child: const Text('Go back to home screen'),
+            ),
           ],
         ),
       ),

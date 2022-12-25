@@ -4,17 +4,17 @@ import 'package:hero_6_bloc_access_navigation/presentation/screens/second_screen
 
 import '../../logic/cubit/counter_cubit.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key, required this.title, required this.color});
+class ThirdScreen extends StatefulWidget {
+  const ThirdScreen({super.key, required this.title, required this.color});
 
   final String title;
   final Color color;
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _ThirdScreenState createState() => _ThirdScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _ThirdScreenState extends State<ThirdScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -101,16 +101,9 @@ class _HomeScreenState extends State<HomeScreen> {
             TextButton(
               onPressed: () {
                 // Navigate to second screen
-                Navigator.of(context).popAndPushNamed('/second_screen');
+                Navigator.of(context).popAndPushNamed('/home');
               },
-              child: const Text('Go to second screen'),
-            ),
-            TextButton(
-              onPressed: () {
-                // Navigate to second screen
-                Navigator.of(context).popAndPushNamed('/third_screen');
-              },
-              child: const Text('Go to third screen'),
+              child: const Text('Go to home screen'),
             )
           ],
         ),
