@@ -49,3 +49,8 @@ This is the route that is displayed first when the application is started normal
 Globally providing blocs for all screens? (will be tackled in future videos)
 
 ![](2022-12-26-10-33-10.png)
+
+
+## Final slides of lecturing video
+
+![](2022-12-29-21-38-58.png)
