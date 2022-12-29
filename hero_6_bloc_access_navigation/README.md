@@ -36,6 +36,9 @@ OnGenerate Callback in main app that deals with routing (registered callback whe
 
 ![](2022-12-25-10-41-44.png) 
 
+How to provide the bloc instance (cubit) globally?
+Wrap MaterialApp in BlocProvider (CounterCubit) to provide the countercubit globally..
+
 ## Important to know 
 
 The home property in the Material App is pushed first in the navigation stack (default route)
