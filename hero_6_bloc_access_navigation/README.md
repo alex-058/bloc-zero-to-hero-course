@@ -31,7 +31,10 @@ Used popAndPushNamed to prevent back buttons
 
 ### Generated routing
 
-Separate file which takes care of route settings 
+Separate file which takes care of route settings.
+OnGenerate Callback in main app that deals with routing (registered callback when pushNamedRoute is called, initial route should be '/')
+
+![](2022-12-25-10-41-44.png) 
 
 ## Important to know 
 
@@ -39,3 +42,7 @@ The home property in the Material App is pushed first in the navigation stack (d
 
 "The widget for the default route of the app ([Navigator.defaultRouteName], which is /).
 This is the route that is displayed first when the application is started normally, unless [initialRoute] is specified. It's also the route that's displayed if the [initialRoute] can't be displayed."
+
+Globally providing blocs for all screens? (will be tackled in future videos)
+
+![](2022-12-26-10-33-10.png)

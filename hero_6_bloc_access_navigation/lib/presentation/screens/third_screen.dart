@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hero_6_bloc_access_navigation/presentation/screens/second_screen.dart';
 
 import '../../logic/cubit/counter_cubit.dart';
 
@@ -45,7 +44,6 @@ class _ThirdScreenState extends State<ThirdScreen> {
                       duration: Duration(milliseconds: 300),
                     ),
                   );
-                  ;
                 }
               },
               builder: (context, state) {
@@ -80,7 +78,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
               children: [
                 FloatingActionButton(
                   backgroundColor: widget.color,
-                  heroTag: Text('${widget.title}'),
+                  heroTag: Text(widget.title),
                   onPressed: () {
                     BlocProvider.of<CounterCubit>(context).decrement();
                   },

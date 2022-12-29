@@ -44,7 +44,6 @@ class _SecondScreenState extends State<SecondScreen> {
                       duration: Duration(milliseconds: 300),
                     ),
                   );
-                  ;
                 }
               },
               builder: (context, state) {
@@ -79,7 +78,7 @@ class _SecondScreenState extends State<SecondScreen> {
               children: [
                 FloatingActionButton(
                   backgroundColor: widget.color,
-                  heroTag: Text('${widget.title}'),
+                  heroTag: Text(widget.title),
                   onPressed: () {
                     BlocProvider.of<CounterCubit>(context).decrement();
                   },
