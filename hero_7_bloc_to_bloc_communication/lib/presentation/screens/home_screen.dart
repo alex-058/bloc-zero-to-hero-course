@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hero_6_bloc_access_navigation/constants/enums.dart';
+import 'package:hero_6_bloc_access_navigation/logic/cubit/internet_cubit.dart';
 
 import '../../logic/cubit/counter_cubit.dart';
 
@@ -109,7 +111,22 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navigator.of(context).popAndPushNamed('/third_screen');
               },
               child: const Text('Go to third screen'),
-            )
+            ),
+            BlocBuilder<InternetCubit, InternetState>(
+              builder: (context, state) {
+                if (state is InternetConnected &&
+                    state.connectionType == ConnectionType.wifi) {
+                  return const Text('Connectivity state: WIFI');
+                } else if (state is InternetConnected &&
+                    state.connectionType == ConnectionType.mobile) {
+                  return const Text('Connectivity state: MOBILE');
+                } else if (state is InternetDisconnected) {
+                  return const Text('No internet connection');
+                }
+
+                return const CircularProgressIndicator();
+              },
+            ),
           ],
         ),
       ),
