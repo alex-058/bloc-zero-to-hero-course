@@ -17,3 +17,6 @@ There are two possibilities:
 Whenever the phone is connected to Wi-Fi -> increment 
 Whenever the phone is connected to mobile -> decrement
 
+## Info 
+
+Test with connection switch only on android possible (wife, cellular etc. can be deactivated)
